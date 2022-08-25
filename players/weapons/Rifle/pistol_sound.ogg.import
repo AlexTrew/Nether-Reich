@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pistol_sound.ogg-6cf0b29aeb1ffe298a4efcaef061327c.oggstr"
+
+[deps]
+
+source_file="res://players/weapons/Rifle/pistol_sound.ogg"
+dest_files=[ "res://.import/pistol_sound.ogg-6cf0b29aeb1ffe298a4efcaef061327c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

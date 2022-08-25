@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/suicide_spawner_enemy-Sheet.png-f0d47115b9455a1060e3c4e6ec80ea1d.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://enemies/HellKite/assets/suicide_spawner_enemy-Sheet.png"
+dest_files=[ "res://.import/suicide_spawner_enemy-Sheet.png-f0d47115b9455a1060e3c4e6ec80ea1d.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

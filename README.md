@@ -1,2 +1,5 @@
-# Nether-Reich
-A roguelike game about purging evil monstrosities from a 17th centuary German city
+# Nether Reich
+
+## Docs
+
+* [Grid Viewer](docs/grid-viewer.md)

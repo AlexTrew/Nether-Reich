@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mole_woman_death_1.ogg-4190ff82073c5b2e21359f2908a56bed.oggstr"
+
+[deps]
+
+source_file="res://enemies/CorruptedVillager/Sounds/MoleWoman/mole_woman_death_1.ogg"
+dest_files=[ "res://.import/mole_woman_death_1.ogg-4190ff82073c5b2e21359f2908a56bed.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/darkness_END.wav-a7257e2ad2ddffaae5c8d4ec8dd41a84.sample"
+
+[deps]
+
+source_file="res://common/assets/darkness_END.wav"
+dest_files=[ "res://.import/darkness_END.wav-a7257e2ad2ddffaae5c8d4ec8dd41a84.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

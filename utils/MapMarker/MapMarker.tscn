@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://players/Player/sprites/map/you_map_marker.png" type="Texture" id=1]
+[ext_resource path="res://utils/MapMarker/MapMarker.gd" type="Script" id=2]
+
+[node name="MapMarker" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 6, 0, 0, 0, -2.62268e-07, 1, 0, -6, -4.37114e-08, 0, 0, 0 )
+texture = ExtResource( 1 )

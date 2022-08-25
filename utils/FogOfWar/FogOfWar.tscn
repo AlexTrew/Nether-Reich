@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://utils/FogOfWar/m_FogOfWar.tres" type="Material" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+material = ExtResource( 1 )
+size = Vector2( 2, 8 )
+
+[node name="FogOfWar" type="MeshInstance"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 2, 0.00633669, -4.76837e-07, 0.0010891 )
+mesh = SubResource( 1 )
+material/0 = null

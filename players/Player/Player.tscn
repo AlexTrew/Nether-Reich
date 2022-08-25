@@ -1,0 +1,601 @@
+[gd_scene load_steps=104 format=2]
+
+[ext_resource path="res://players/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://players/weapons/Pike/pike.tscn" type="PackedScene" id=2]
+[ext_resource path="res://players/weapons/Rifle/Rifle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://players/Player/state_machine/RunningState.gd" type="Script" id=4]
+[ext_resource path="res://players/Player/state_machine/PlayerFSM.gd" type="Script" id=5]
+[ext_resource path="res://players/Player/sprites/shoot/1.png" type="Texture" id=6]
+[ext_resource path="res://players/Player/sprites/transition/sword_to_gun_trans-Sheet.png" type="Texture" id=7]
+[ext_resource path="res://players/Player/state_machine/SwordAttackingState.gd" type="Script" id=8]
+[ext_resource path="res://players/Player/state_machine/UsingLeftHandItemState.gd" type="Script" id=9]
+[ext_resource path="res://players/Player/state_machine/SwordParryingState.gd" type="Script" id=10]
+[ext_resource path="res://players/Player/LeftHandItemFSM/LeftHandItemFSM.tscn" type="PackedScene" id=11]
+[ext_resource path="res://players/Player/PlayerTranslationComponent.gd" type="Script" id=12]
+[ext_resource path="res://players/Player/sprites/reload/player-reload-Sheet.png" type="Texture" id=13]
+[ext_resource path="res://players/Player/state_machine/DeadState.gd" type="Script" id=14]
+[ext_resource path="res://players/weapons/Pike/pike.png" type="Texture" id=15]
+[ext_resource path="res://players/Player/state_machine/ReloadingState.gd" type="Script" id=16]
+[ext_resource path="res://players/Player/sprites/parry/3.png" type="Texture" id=17]
+[ext_resource path="res://players/Player/sprites/parry/5.png" type="Texture" id=18]
+[ext_resource path="res://players/Player/sprites/parry/4.png" type="Texture" id=19]
+[ext_resource path="res://players/Player/state_machine/SidestepState.gd" type="Script" id=20]
+[ext_resource path="res://players/Player/PlayerRotationComponent.gd" type="Script" id=21]
+[ext_resource path="res://effects/TimeScaleSlowdownComponent.tscn" type="PackedScene" id=22]
+[ext_resource path="res://utils/Plane2DMovementHelper.tscn" type="PackedScene" id=23]
+[ext_resource path="res://players/Player/sprites/legs/player-legs-Sheet.png" type="Texture" id=24]
+[ext_resource path="res://players/Player/sprites/shoot/player_stab-Sheet1.png" type="Texture" id=25]
+[ext_resource path="res://players/Player/StaggeredState.gd" type="Script" id=26]
+[ext_resource path="res://players/Player/AbilitySlotComponent.gd" type="Script" id=27]
+[ext_resource path="res://players/Player/Lantern/Lantern.tscn" type="PackedScene" id=28]
+[ext_resource path="res://players/Player/state_machine/BlockingState.gd" type="Script" id=29]
+[ext_resource path="res://players/Player/Sounds/injured_oof.wav" type="AudioStream" id=30]
+[ext_resource path="res://players/Player/Sounds/pickup_gun.ogg" type="AudioStream" id=31]
+[ext_resource path="res://utils/DropItemComponent.tscn" type="PackedScene" id=32]
+[ext_resource path="res://players/Player/HealthRestoration.gd" type="Script" id=33]
+[ext_resource path="res://players/Player/Sounds/potion_drink.ogg" type="AudioStream" id=34]
+[ext_resource path="res://players/Player/Sounds/energy_pickup.ogg" type="AudioStream" id=35]
+[ext_resource path="res://players/Player/Sounds/sidestep.ogg" type="AudioStream" id=36]
+[ext_resource path="res://players/Player/Lantern/LanternModel.tscn" type="PackedScene" id=37]
+[ext_resource path="res://players/Player/sprites/legs/legs_sidestep-Sheet-export.png" type="Texture" id=38]
+[ext_resource path="res://players/Player/Sounds/darkness-001.ogg" type="AudioStream" id=39]
+[ext_resource path="res://players/Player/sprites/legs/lunge.png" type="Texture" id=40]
+[ext_resource path="res://players/Player/LegsSpriteHolder.gd" type="Script" id=43]
+[ext_resource path="res://players/Player/LegsDirectionHelper.gd" type="Script" id=44]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 1200, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 1600, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 2000, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 2400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 18
+atlas = ExtResource( 40 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 2800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 2400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 2000, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 1600, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 1200, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 2400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 2000, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 18
+atlas = ExtResource( 24 )
+region = Rect2( 1600, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 1200, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 1600, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 2000, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 2400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 18
+atlas = ExtResource( 38 )
+region = Rect2( 2800, 0, 400, 400 )
+
+[sub_resource type="SpriteFrames" id=29]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "move",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": false,
+"name": "lunge",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "move_side_left",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "move_backwards",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "move_side_right",
+"speed": 12.0
+} ]
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 13 )
+region = Rect2( 240, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 13 )
+region = Rect2( 320, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 13 )
+region = Rect2( 400, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 13 )
+region = Rect2( 480, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 13 )
+region = Rect2( 560, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 400, 800, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 800, 800, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 1200, 800, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 0, 800, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 400, 400, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 800, 400, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 1200, 400, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 1600, 400, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 0, 400, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=64]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=65]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=66]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 1200, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=50]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=51]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 2000, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=52]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 2000, 400, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=53]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 2000, 800, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=54]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=55]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=56]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 1200, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 1600, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=59]
+flags = 18
+atlas = ExtResource( 7 )
+region = Rect2( 2000, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 16
+atlas = ExtResource( 25 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 16
+atlas = ExtResource( 25 )
+region = Rect2( 1200, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=62]
+flags = 16
+atlas = ExtResource( 25 )
+region = Rect2( 1600, 0, 400, 400 )
+
+[sub_resource type="SpriteFrames" id=63]
+animations = [ {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
+"loop": true,
+"name": "reload",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 36 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 38 ), SubResource( 40 ) ],
+"loop": true,
+"name": "blocking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "parry",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 42 ), SubResource( 45 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "shoot",
+"speed": 24.0
+}, {
+"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 65 ) ],
+"loop": false,
+"name": "staggered",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": false,
+"name": "holster_pistol",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ],
+"loop": true,
+"name": "aim_pistol",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
+"loop": false,
+"name": "draw_pistol",
+"speed": 35.0
+}, {
+"frames": [ SubResource( 60 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
+"loop": false,
+"name": "stab",
+"speed": 24.0
+} ]
+
+[node name="Player" type="KinematicBody"]
+collision_layer = 262145
+collision_mask = 262145
+script = ExtResource( 1 )
+
+[node name="LegsDirectionHelper" type="Spatial" parent="."]
+transform = Transform( 0.717446, 0, -0.696614, 0, 1, 0, 0.696614, 0, 0.717446, 0, 0, 0 )
+script = ExtResource( 44 )
+
+[node name="LegsSpriteHolder" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.110213 )
+script = ExtResource( 43 )
+
+[node name="AnimatedSpriteLegs" type="AnimatedSprite3D" parent="LegsSpriteHolder"]
+transform = Transform( 0.999827, -0.0205224, -8.15508e-10, 0, -4.80825e-08, 1, -0.0186567, -1.09981, -4.37038e-08, 0, -0.3, 0 )
+layers = 2
+flip_h = true
+modulate = Color( 0.847059, 0.521569, 0.521569, 1 )
+shaded = true
+frames = SubResource( 29 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape" parent="."]
+transform = Transform( 0.615589, 0, 0, 0, 1, 0, 0, 0, 0.517004, 0, -0.0267652, 0 )
+shape = SubResource( 30 )
+
+[node name="Pike" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2.31348, 0, 0, 0, 1.16909, 0, 0, 0, 2.04638, 0.109457, -0.2, -1.27007 )
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform( -0.8, 1.20797e-07, 6.60024e-15, 0, -3.49691e-08, 1, 1.20797e-07, 0.8, 4.37114e-08, -0.0417262, 0, 0.0836556 )
+layers = 2
+shaded = true
+frames = SubResource( 63 )
+animation = "aim_pistol"
+frame = 1
+playing = true
+
+[node name="Rifle" parent="." instance=ExtResource( 3 )]
+
+[node name="PlayerFSM" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="UsingLeftHandItemState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 9 )
+
+[node name="LeftHandItemFSM" parent="PlayerFSM/UsingLeftHandItemState" instance=ExtResource( 11 )]
+
+[node name="RunningState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 4 )
+
+[node name="DodgeTimer" type="Timer" parent="PlayerFSM/RunningState"]
+one_shot = true
+
+[node name="DeadState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 14 )
+
+[node name="SwordAttackingState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 8 )
+
+[node name="LungeAndAttackTimer" type="Timer" parent="PlayerFSM/SwordAttackingState"]
+wait_time = 0.01
+one_shot = true
+
+[node name="StepBeforeAttackTimer" type="Timer" parent="PlayerFSM/SwordAttackingState"]
+wait_time = 0.1
+one_shot = true
+
+[node name="StepSlowdownWindowTimer" type="Timer" parent="PlayerFSM/SwordAttackingState"]
+wait_time = 0.5
+one_shot = true
+
+[node name="SwordParryingState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 10 )
+
+[node name="ParryingTimer" type="Timer" parent="PlayerFSM/SwordParryingState"]
+wait_time = 0.4
+
+[node name="MovementTypeTransitionTimer" type="Timer" parent="PlayerFSM"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ReloadingState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 16 )
+
+[node name="SidestepState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 20 )
+
+[node name="SidestepTimer" type="Timer" parent="PlayerFSM/SidestepState"]
+
+[node name="DustSpaceTimer" type="Timer" parent="PlayerFSM/SidestepState"]
+wait_time = 0.03
+
+[node name="StaggeredState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 26 )
+
+[node name="StaggeredTimer" type="Timer" parent="PlayerFSM/StaggeredState"]
+wait_time = 0.6
+one_shot = true
+
+[node name="BlockingState" type="Node" parent="PlayerFSM"]
+script = ExtResource( 29 )
+
+[node name="DodgeTimer" type="Timer" parent="PlayerFSM/BlockingState"]
+one_shot = true
+
+[node name="Plane2DMovementHelper" parent="." instance=ExtResource( 23 )]
+
+[node name="PlayerTranslationComponent" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="PlayerRotationComponent" type="Node" parent="."]
+script = ExtResource( 21 )
+
+[node name="TimeScaleSlowdownComponent" parent="." instance=ExtResource( 22 )]
+
+[node name="IFrameTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FootstepsAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unit_db = 13.254
+
+[node name="TakeDamageAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 30 )
+attenuation_model = 3
+unit_db = -2.945
+
+[node name="PickupAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 31 )
+attenuation_model = 3
+unit_db = -5.89
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="HealthRestorationStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 34 )
+attenuation_model = 3
+unit_db = 0.777
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="DropItemComponent" parent="." instance=ExtResource( 32 )]
+
+[node name="HealthRestoration" type="Node" parent="."]
+script = ExtResource( 33 )
+
+[node name="EnergyAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
+volume_db = -6.769
+
+[node name="SidestepStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 36 )
+unit_db = 19.665
+pitch_scale = 1.56
+
+[node name="HeldWeaponSprite" type="Sprite3D" parent="."]
+transform = Transform( -1.06257, -0.656248, -1.01137, -0.00730539, 1.24873, -1.25038, 0.911525, -0.75499, -1.18899, 0.012686, 0.313452, -1.0066 )
+texture = ExtResource( 15 )
+
+[node name="AbilitySlotComponent" type="Node" parent="."]
+script = ExtResource( 27 )
+
+[node name="LanternTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="LanternModel" parent="." instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.177944, -0.19423, -0.912167 )
+
+[node name="DarknessDamageTimer" type="Timer" parent="."]
+
+[node name="DarknessDamageSoundStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 39 )
+
+[node name="Tween" type="Tween" parent="DarknessDamageSoundStream"]
+
+[node name="Lantern" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178178, 1.27851, -0.932589 )

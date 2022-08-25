@@ -1,0 +1,82 @@
+extends "res://utils/AbstractFSMState.gd"
+
+
+var flank_complete
+var flank_right
+
+var tangent2 = Vector2(0,0)
+var tangent3 = Vector3(0,0,0)
+
+# maximum speed in pixels/s 
+const SPEED = 1
+
+const shots_delay = 0.02
+
+var time = 0
+
+# acceleration in pixels/s^2
+const ACCELERATION = 75
+
+var projectile_scene = preload("res://enemies/HellKite/HellkiteProjectile.tscn")
+
+func _ready():
+	var _connection = $AttackingTimer.connect("timeout", self, "_on_Timer_timeout")
+
+
+func on_transition_to():
+	fsm_owner.get_node("ExhaleAudioStreamPlayer3D").play()
+	fsm_owner.get_node("AnimatedSprite").frame = 0;
+	flank_complete = false
+	$AttackingTimer.start()
+
+	
+func transit():
+	var new_state
+
+	# ADVANCING transition function:
+	if get_parent().has_left_flanking_distance():
+		fsm_owner.get_node("ExhaleAudioStreamPlayer3D").stop()
+		new_state = 'ADVANCING'
+		
+	# CHARGING transition function
+	elif flank_complete:
+		fsm_owner.get_node("ExhaleAudioStreamPlayer3D").stop()
+		new_state = 'FLANKING'
+
+	return new_state
+
+
+func state_physics_process(_delta):
+	var forward = (fsm_owner.global_transform.origin - fsm_owner.target.global_transform.origin)
+
+	var tangent = fsm_owner.get_node("Plane2DMovementHelper").get_2d_tangent(forward, flank_right)
+
+
+
+	# work out the speed to add this tick (acceleration)
+	# note that delta is not used - this motion vector is passed to move_and_slide which will apply delta
+	var motion = tangent * ACCELERATION
+
+	fsm_owner.motion = fsm_owner.motion + motion
+
+	if(fsm_owner.motion.length() > SPEED):
+		fsm_owner.motion = fsm_owner.motion.normalized() * SPEED
+
+func state_process(_delta):
+	fsm_owner.look_at(fsm_owner.target.global_transform.origin, Vector3.UP)
+
+	time+=_delta
+	if time>shots_delay:
+		var projectile = projectile_scene.instance()
+		fsm_owner.get_parent().add_child(projectile)
+		projectile.global_transform.origin = fsm_owner.global_transform.origin + Vector3(0, 0.5, 0)
+		projectile.init(fsm_owner, (fsm_owner.target.global_transform.origin - fsm_owner.global_transform.origin).normalized() + Vector3(rand_range(-1,1), 0 ,rand_range(-1,1)))
+		time = 0
+	
+
+func take_hit(value, piercing):
+	fsm_owner.take_damage(value, piercing)
+
+func _on_Timer_timeout():
+	self.flank_complete = true
+	

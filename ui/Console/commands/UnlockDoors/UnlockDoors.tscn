@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/Console/commands/UnlockDoors/UnlockDoors.gd" type="Script" id=1]
+
+[node name="UnlockDoors" type="Node"]
+script = ExtResource( 1 )

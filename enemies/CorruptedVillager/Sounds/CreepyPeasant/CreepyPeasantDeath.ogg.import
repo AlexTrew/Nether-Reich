@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CreepyPeasantDeath.ogg-f459a3cc0b81f6a313ca54d94b406f1d.oggstr"
+
+[deps]
+
+source_file="res://enemies/CorruptedVillager/Sounds/CreepyPeasant/CreepyPeasantDeath.ogg"
+dest_files=[ "res://.import/CreepyPeasantDeath.ogg-f459a3cc0b81f6a313ca54d94b406f1d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

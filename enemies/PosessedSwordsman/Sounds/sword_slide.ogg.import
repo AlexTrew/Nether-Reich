@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sword_slide.ogg-fc712fc61b97be6a43a21cc1016dd5c1.oggstr"
+
+[deps]
+
+source_file="res://enemies/PosessedSwordsman/Sounds/sword_slide.ogg"
+dest_files=[ "res://.import/sword_slide.ogg-fc712fc61b97be6a43a21cc1016dd5c1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

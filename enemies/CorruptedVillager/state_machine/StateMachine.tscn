@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/CorruptedVillagerFSM.gd" type="Script" id=1]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/FlankingState.gd" type="Script" id=2]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/IdleState.gd" type="Script" id=3]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/ChargingState.gd" type="Script" id=4]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/StunnedState.gd" type="Script" id=5]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/RecoilingState.gd" type="Script" id=6]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/AttackingState.gd" type="Script" id=7]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/AdvancingState.gd" type="Script" id=8]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/DeadState.gd" type="Script" id=9]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/PreAttackingState.gd" type="Script" id=10]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource( 1 )
+
+[node name="AttackingState" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="AttackCooldownTimer" type="Timer" parent="AttackingState"]
+
+[node name="AdvancingState" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="FlankingState" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="FlankingTimer" type="Timer" parent="FlankingState"]
+one_shot = true
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="RecoilingState" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="RecoilingTimer" type="Timer" parent="RecoilingState"]
+wait_time = 0.2
+one_shot = true
+
+[node name="StunnedState" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="StunnedTimer" type="Timer" parent="StunnedState"]
+one_shot = true
+
+[node name="DeadState" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="ChargingState" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="ChargingTimer" type="Timer" parent="ChargingState"]
+wait_time = 0.3
+one_shot = true
+
+[node name="PreAttackingState" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="PreAttackingTimer" type="Timer" parent="PreAttackingState"]
+wait_time = 0.5
+one_shot = true

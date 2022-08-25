@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/common/mud_tex.png" type="Texture" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 10000, 10000 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 50, 50, 1 )
+
+[node name="TargetPlane" type="CSGMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+layers = 0
+use_collision = true
+collision_layer = 524288
+collision_mask = 524288
+mesh = SubResource( 1 )
+material = SubResource( 2 )

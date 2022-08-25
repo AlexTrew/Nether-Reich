@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://common/assets/sounds/stab.wav" type="AudioStream" id=1]
+
+[node name="DamageAudioStreamPlayer3D" type="AudioStreamPlayer3D"]
+stream = ExtResource( 1 )
+attenuation_model = 3
+unit_db = 2.945

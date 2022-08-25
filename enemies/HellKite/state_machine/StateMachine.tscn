@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://enemies/HellKite/state_machine/FlankingState.gd" type="Script" id=1]
+[ext_resource path="res://enemies/HellKite/state_machine/RetreatingState.gd" type="Script" id=2]
+[ext_resource path="res://enemies/HellKite/state_machine/AttackState.gd" type="Script" id=3]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/IdleState.gd" type="Script" id=5]
+[ext_resource path="res://enemies/HellKite/state_machine/HellkiteFSM.gd" type="Script" id=6]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/AdvancingState.gd" type="Script" id=8]
+[ext_resource path="res://enemies/CorruptedVillager/state_machine/DeadState.gd" type="Script" id=9]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource( 6 )
+
+[node name="AdvancingState" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="FlankingState" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="FlankingTimer" type="Timer" parent="FlankingState"]
+wait_time = 2.0
+one_shot = true
+
+[node name="AttackState" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="AttackingTimer" type="Timer" parent="AttackState"]
+one_shot = true
+
+[node name="Timer" type="Timer" parent="AttackState"]
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="DeadState" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="RetreatingState" type="Node" parent="."]
+script = ExtResource( 2 )

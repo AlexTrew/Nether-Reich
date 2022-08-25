@@ -1,0 +1,115 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://enemies/HeadyHandBaller/assets/hand_move_sheet.png" type="Texture" id=1]
+[ext_resource path="res://enemies/HeadyHandBaller/assets/head_turret1.png" type="Texture" id=2]
+[ext_resource path="res://enemies/HeadyHandBaller/HeadyHandBaller.gd" type="Script" id=3]
+[ext_resource path="res://enemies/HeadyHandBaller/state_machine/StateMachine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://utils/DropItemComponent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://utils/Plane2DMovementHelper.tscn" type="PackedScene" id=6]
+[ext_resource path="res://effects/sounds/damage_sound_scenes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/HeadyHandBaller/assets/hand_base_dead-export.png" type="Texture" id=8]
+[ext_resource path="res://enemies/HeadyHandBaller/assets/head_turret1_dead1.png" type="Texture" id=9]
+[ext_resource path="res://enemies/HeadyHandBaller/Sounds/typing walk.ogg" type="AudioStream" id=10]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 400, 0, 400, 400 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 16
+atlas = ExtResource( 1 )
+region = Rect2( 800, 0, 400, 400 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "roaming",
+"speed": 9.0
+} ]
+
+[node name="HeadyHandBaller" type="KinematicBody"]
+collision_layer = 5
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="SpriteHolder" type="Spatial" parent="."]
+transform = Transform( 0.977101, 0, -0.212775, 0, 1, 0, 0.212775, 0, 0.977101, 0.222619, 0.1, 0.675 )
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="SpriteHolder"]
+transform = Transform( 0.433013, 0.25, 2.18557e-08, 0, -2.18557e-08, 1, 0.25, -0.433013, -3.78552e-08, 0, 0.0189685, -0.538299 )
+layers = 2
+shaded = true
+frames = SubResource( 2 )
+animation = "idle"
+
+[node name="AnimatedSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, 1, 0, -0.5, -4.37114e-08, 0, 0, 0 )
+layers = 2
+shaded = true
+frames = SubResource( 6 )
+animation = "roaming"
+playing = true
+
+[node name="StateMachine" parent="." instance=ExtResource( 4 )]
+
+[node name="DropItemComponent" parent="." instance=ExtResource( 5 )]
+
+[node name="Plane2DMovementHelper" parent="." instance=ExtResource( 6 )]
+
+[node name="DamageAudioStreamPlayer3D" parent="." instance=ExtResource( 7 )]
+
+[node name="VomitAudioStreamPlayer3D" parent="." instance=ExtResource( 7 )]
+stream = null
+attenuation_model = 0
+unit_db = 14.305
+pitch_scale = 0.66
+attenuation_filter_cutoff_hz = 10000.0
+
+[node name="MovementAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 10 )
+unit_db = 28.211
+
+[node name="DamageSpriteModulateTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]

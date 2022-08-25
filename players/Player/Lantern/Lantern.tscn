@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://players/Player/Lantern/LanternModel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://players/Player/Lantern/LanternPickupCollision.gd" type="Script" id=2]
+[ext_resource path="res://players/Player/Lantern/LanternLightCollision.gd" type="Script" id=3]
+[ext_resource path="res://ui/Healthbar/healthbar.png" type="Texture" id=4]
+[ext_resource path="res://players/Player/Lantern/progress_bar.png" type="Texture" id=5]
+
+[sub_resource type="CylinderShape" id=1]
+
+[node name="Lantern" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27851, 0 )
+
+[node name="LanternModel" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60002, 0 )
+
+[node name="LanternLightCollision" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352066, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LanternLightCollision"]
+transform = Transform( 12, 0, 0, 0, 10, 0, 0, 0, 12, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="LanternPickupCollision" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352066, 0 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LanternPickupCollision"]
+transform = Transform( 0.5, 0, 0, 0, 10, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="LanternPickupTimer" type="Timer" parent="LanternPickupCollision"]
+wait_time = 2.0
+one_shot = true
+
+[node name="PickupProgress" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, 0, -1.37519, -0.574005 )
+visible = false
+
+[node name="Remaining" type="Spatial" parent="PickupProgress"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.506906, 0, 0 )
+
+[node name="RemainingSprite" type="Sprite3D" parent="PickupProgress/Remaining"]
+transform = Transform( 1, 0, 0, 0, -1.31134e-07, 2, 0, -3, -8.74228e-08, 0.504356, 0, 0 )
+modulate = Color( 0.368627, 0.117647, 0.117647, 1 )
+texture = ExtResource( 4 )
+
+[node name="Completed" type="Spatial" parent="PickupProgress"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503428, 0, 0 )
+
+[node name="CompletedSprite" type="Sprite3D" parent="PickupProgress/Completed"]
+transform = Transform( 1, 0, 0, 0, -1.31134e-07, 2, 0, -3, -8.74228e-08, 0.509621, 0, 0 )
+modulate = Color( 0.835294, 0.882353, 0.780392, 1 )
+texture = ExtResource( 5 )
+
+[node name="BGLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.252903, 0 )
+light_color = Color( 0.478431, 0.462745, 0.462745, 1 )
+light_energy = 2.0
+light_cull_mask = 4293918721
+omni_range = 18.317
+
+[node name="CharacterLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82155, 0 )
+light_color = Color( 0.976471, 0.698039, 0.698039, 1 )
+light_energy = 2.0
+light_cull_mask = 4293918722
+omni_range = 12.4506

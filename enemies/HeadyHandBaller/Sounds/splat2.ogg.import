@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/splat2.ogg-96abaa8821112df92c53ae80859021ea.oggstr"
+
+[deps]
+
+source_file="res://enemies/HeadyHandBaller/Sounds/splat2.ogg"
+dest_files=[ "res://.import/splat2.ogg-96abaa8821112df92c53ae80859021ea.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

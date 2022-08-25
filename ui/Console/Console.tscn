@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/common/netherreich_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/Console/Console.gd" type="Script" id=2]
+[ext_resource path="res://ui/Console/commands/DumpGrid/DumpGrid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/Console/commands/Kill/Kill.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/Console/commands/UnlockDoors/UnlockDoors.tscn" type="PackedScene" id=5]
+
+[node name="Console" type="Control"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_top = 24.0
+margin_right = 424.0
+margin_bottom = 192.0
+theme = ExtResource( 1 )
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="LineEdit" parent="."]
+margin_right = 424.0
+margin_bottom = 24.0
+theme = ExtResource( 1 )
+placeholder_text = "Console (Type a command, e.g. 'help')"
+caret_blink = true
+
+[node name="Commands" type="Node" parent="."]
+
+[node name="Kill" parent="Commands" instance=ExtResource( 4 )]
+
+[node name="DumpGrid" parent="Commands" instance=ExtResource( 3 )]
+
+[node name="UnlockDoors" parent="Commands" instance=ExtResource( 5 )]

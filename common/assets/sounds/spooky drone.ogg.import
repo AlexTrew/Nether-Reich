@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/spooky drone.ogg-a47745209682c4727d689cbd15082ddc.oggstr"
+
+[deps]
+
+source_file="res://common/assets/sounds/spooky drone.ogg"
+dest_files=[ "res://.import/spooky drone.ogg-a47745209682c4727d689cbd15082ddc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

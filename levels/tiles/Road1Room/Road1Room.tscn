@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://levels/common/mud_tex.png" type="Texture" id=1]
+[ext_resource path="res://levels/tiles/Road1Room/Road1Room.gd" type="Script" id=2]
+[ext_resource path="res://statics/HighHouse/HouseRowGeneric.tscn" type="PackedScene" id=3]
+[ext_resource path="res://logic/CameraLockTrigger/CameraLockTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/tiles/RoadNRoomComponent/RoadNRoomComponent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/RandomItemPickup/RandomItemPickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://logic/RoomDoor/RoomDoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://players/Player/sprites/dead/dead.png" type="Texture" id=8]
+[ext_resource path="res://players/Player/sprites/shoot/player-export_dead.png" type="Texture" id=9]
+[ext_resource path="res://statics/Well/Well.tscn" type="PackedScene" id=10]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 20, 20, 20 )
+
+[sub_resource type="PlaneMesh" id=3]
+
+[node name="Road1" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Statics" type="Spatial" parent="."]
+
+[node name="RandomItemPickup" parent="Statics" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="Spatial" parent="Statics" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7208, 0, -6.06398 )
+
+[node name="Ground" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
+mesh = SubResource( 1 )
+material = SubResource( 2 )
+
+[node name="Spatial2" parent="Statics" instance=ExtResource( 3 )]
+transform = Transform( -0.000733181, 0, -1, 0, 1, 0, 1, 0, -0.000733181, 5.60467, 0, -10.7373 )
+
+[node name="Spatial4" parent="Statics" instance=ExtResource( 3 )]
+transform = Transform( 0.00916273, 0, 0.999958, 0, 1, 0, -0.999958, 0, 0.00916273, -5.00944, 0, 10.2628 )
+
+[node name="Spatial3" parent="Statics" instance=ExtResource( 3 )]
+transform = Transform( -0.999773, 0, 0.0212912, 0, 1, 0, -0.0212912, 0, -0.999773, 9.18923, 0, 6.14865 )
+
+[node name="CameraLockTrigger" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( 1.80857, 0, 0, 0, 1, 0, 0, 0, 3.58964, 0, 0, 0 )
+
+[node name="Spawners" type="Spatial" parent="Statics"]
+
+[node name="EastRoomDoor" parent="Statics" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.60515, 0, 1.99739 )
+
+[node name="WestRoomDoor" parent="Statics" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.3261, 0, -2.03176 )
+
+[node name="NorthRoomDoor" parent="Statics" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.702994, 0, 7 )
+
+[node name="SouthRoomDoor" parent="Statics" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51275, 0, -7.45592 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Statics"]
+transform = Transform( 0.991865, 0.840359, 2.82564e-08, 0, -5.68248e-08, 1, 0.840359, -0.991865, -3.33506e-08, 0.360281, 0.1, -2.65258 )
+shaded = true
+texture = ExtResource( 8 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="Statics/Sprite3D"]
+transform = Transform( 3.61103, -1.72059, -9.05097e-08, 1.72059, 3.61103, -2.12435e-08, 9.42488e-08, -2.19846e-08, 6, 0.0148536, 0.176722, 0.436141 )
+shaded = true
+texture = ExtResource( 9 )
+
+[node name="Well" parent="Statics" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 0.999972, -0.00748739, 0, 0.00748739, 0.999972, 0.229726, 0, -4.05333 )
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavMeshTemplate" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="RoadNRoomComponent" parent="." instance=ExtResource( 5 )]

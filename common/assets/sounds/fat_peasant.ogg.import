@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fat_peasant.ogg-2f6e34b62ef119813fa0b066dd825033.oggstr"
+
+[deps]
+
+source_file="res://common/assets/sounds/fat_peasant.ogg"
+dest_files=[ "res://.import/fat_peasant.ogg-2f6e34b62ef119813fa0b066dd825033.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

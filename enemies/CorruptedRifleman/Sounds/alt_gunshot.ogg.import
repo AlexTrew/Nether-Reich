@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/alt_gunshot.ogg-5b789a23c9ab0e6feb3acfe5dfc731d3.oggstr"
+
+[deps]
+
+source_file="res://enemies/CorruptedRifleman/Sounds/alt_gunshot.ogg"
+dest_files=[ "res://.import/alt_gunshot.ogg-5b789a23c9ab0e6feb3acfe5dfc731d3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

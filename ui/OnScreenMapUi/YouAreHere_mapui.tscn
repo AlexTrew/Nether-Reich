@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="TextureRect" type="TextureRect"]
+margin_right = 61.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 2, 0 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

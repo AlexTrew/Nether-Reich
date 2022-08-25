@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://players/weapons/Rifle/RifleRoundShot.gd" type="Script" id=1]
+[ext_resource path="res://players/weapons/Rifle/ball.png" type="Texture" id=2]
+[ext_resource path="res://utils/Plane2DMovementHelper.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.05, 0.05, 0.05 )
+
+[node name="RifleRoundShot" type="Spatial"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Plane2DMovementHelper" parent="." instance=ExtResource( 3 )]
+
+[node name="SpriteHolder" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+
+[node name="ball" type="Sprite3D" parent="SpriteHolder"]
+transform = Transform( -3.25841e-08, 0, 0.2, 0, 0.2, 0, -0.2, 0, -3.25841e-08, 0, 0, 0 )
+axis = 1
+texture = ExtResource( 2 )

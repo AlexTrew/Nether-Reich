@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://levels/tiles/Textures/nether reich syle concept.png" type="Texture" id=1]
+[ext_resource path="res://statics/HighHouse/HighHouseStatic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/tiles/Road3Room/Road3Room.gd" type="Script" id=3]
+[ext_resource path="res://statics/HighHouse/HouseRowGeneric.tscn" type="PackedScene" id=4]
+[ext_resource path="res://logic/CameraLockTrigger/CameraLockTrigger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://logic/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://logic/Trigger/Trigger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/tiles/RoadNRoomComponent/RoadNRoomComponent.tscn" type="PackedScene" id=9]
+[ext_resource path="res://utils/FogOfWar/FogOfWar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://logic/RoomDoor/RoomDoor.tscn" type="PackedScene" id=11]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 0.592157, 1, 0, 0.0588235 )
+
+[sub_resource type="PlaneMesh" id=3]
+material = SubResource( 2 )
+size = Vector2( 20, 60 )
+
+[node name="Road3" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Navigation" type="Navigation" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6521, 1, -12.5548 )
+
+[node name="Statics" type="Spatial" parent="."]
+
+[node name="HighHouseStatic3" parent="Statics" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71678, 0, 13.7766 )
+
+[node name="Trigger2" parent="Statics" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.7409 )
+
+[node name="Trigger" parent="Statics" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="CameraLockTrigger" parent="Statics" instance=ExtResource( 6 )]
+transform = Transform( 1.95993, 0, 0, 0, 1, 0, 0, 0, 9.45185, 0, 0, 21.1612 )
+
+[node name="HighHouseStatic2" parent="Statics" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96055, -1.64173, -5.82585 )
+
+[node name="HighHouseStatic" parent="Statics" instance=ExtResource( 2 )]
+transform = Transform( -0.510528, 0, 0.859861, 0, 1, 0, -0.859861, 0, -0.510528, 9.24043, -1.64173, 46.5382 )
+
+[node name="Spatial8" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( -0.00462523, 0, -0.999989, 0, 1, 0, 0.999989, 0, -0.00462523, 7.24855, -0.638983, -10.083 )
+
+[node name="Spatial4" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( -0.43754, 0, 0.899199, 0, 1, 0, -0.899199, 0, -0.43754, -2.53397, -0.949334, 49.1704 )
+
+[node name="Spatial7" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( -0.954423, 0, -0.298458, 0, 1, 0, 0.298458, 0, -0.954423, 11.3722, -0.912034, 3.38856 )
+
+[node name="Spatial6" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( -0.99997, 0, 0.00773151, 0, 1, 0, -0.00773151, 0, -0.99997, 11.1716, -0.827179, 24.3387 )
+
+[node name="Spatial5" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( -0.972836, 0, 0.231493, 0, 1, 0, -0.231493, 0, -0.972836, 6.03615, -0.742158, 41.1428 )
+
+[node name="Spatial3" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.304, -0.767702, 31.1076 )
+
+[node name="Spatial9" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( 0.243497, 0, 0.969902, 0, 1, 0, -0.969902, 0, 0.243497, -17.304, -0.767702, 47.0993 )
+
+[node name="Spatial2" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( 0.982337, 0.00966899, -0.186868, -0.00919049, 0.999952, 0.00342686, 0.186892, -0.00164893, 0.98238, -10.1407, -0.83788, 16.7786 )
+
+[node name="Spatial" parent="Statics" instance=ExtResource( 4 )]
+transform = Transform( 0.949781, 0, 0.312915, 0, 1, 0, -0.312915, 0, 0.949781, -12.7243, -0.517441, -1.27274 )
+
+[node name="Ground3" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 40 )
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="Ground2" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 20 )
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="Ground" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 2, 0, 0 )
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="Ground4" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -17.9743, 0, 40 )
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="Ground5" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -17.9743, 0, 20 )
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="Ground6" type="CSGMesh" parent="Statics"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -15.9743, 0, 0 )
+mesh = SubResource( 1 )
+material = SubResource( 4 )
+
+[node name="Spawners" type="Spatial" parent="Statics"]
+
+[node name="EnemySpawner4" parent="Statics/Spawners" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4449 )
+
+[node name="EnemySpawner3" parent="Statics/Spawners" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4324 )
+
+[node name="EnemySpawner2" parent="Statics/Spawners" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.9694 )
+
+[node name="EnemySpawner" parent="Statics/Spawners" instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 10.9026, 0, 7.7928 )
+
+[node name="OriginSouthRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -2.61304, 0, -6.70891 )
+
+[node name="OriginEastRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( 0.253758, 0, -0.967268, 0, 1, 0, 0.967268, 0, 0.253758, 8.84184, 0, 3.39283 )
+
+[node name="OriginWestRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( -0.368692, 0, 0.929551, 0, 1, 0, -0.929551, 0, -0.368692, -8.02178, 0, 2.56451 )
+
+[node name="Child0WestRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.38081, 0, 14.2643 )
+
+[node name="Child0EastRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.37876, 0, 20.2104 )
+
+[node name="Child1NorthRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -6.50879, 0, 47.3928 )
+
+[node name="Child1WestRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.4439, 0, 36.547 )
+
+[node name="Child1EastRoomDoor" parent="Statics" instance=ExtResource( 11 )]
+transform = Transform( -0.223318, 0, -0.974746, 0, 1, 0, 0.974746, 0, -0.223318, 3.67727, 0, 36.9936 )
+
+[node name="RoadNRoomComponent" parent="." instance=ExtResource( 9 )]
+
+[node name="NavMeshTemplate" type="MeshInstance" parent="."]
+transform = Transform( 1, -0.000213443, -0.000332683, 0.000213358, 1, -0.000222944, 0.000332738, 0.000222862, 1, 0, 0.8, 20 )
+visible = false
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Spatial" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-07, 0, 2, 0, 1, 0, -10, 0, -8.74228e-08, 17.0063, 2, 8.00109 )

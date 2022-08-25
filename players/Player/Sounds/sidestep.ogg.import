@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sidestep.ogg-505a33dbb50fee592c7085f6f6a9785f.oggstr"
+
+[deps]
+
+source_file="res://players/Player/Sounds/sidestep.ogg"
+dest_files=[ "res://.import/sidestep.ogg-505a33dbb50fee592c7085f6f6a9785f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

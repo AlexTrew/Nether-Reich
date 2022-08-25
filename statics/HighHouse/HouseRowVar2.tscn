@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://statics/HighHouse/HighHouseStatic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://statics/HighHouse/high_house_big.tscn" type="PackedScene" id=3]
+
+[node name="HighHouseRowVar2" type="Spatial"]
+
+[node name="HighHouseStatic" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.998619, 0.0525451, 0, -0.0525451, 0.998619, 0, 0, 11.8403 )
+
+[node name="HighHouseStatic2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.099615, 0, 0.995026, 0.0551104, 0.998465, -0.00551726, -0.993499, 0.0553858, 0.0994621, 0, 0, 0.248658 )
+
+[node name="high_house_big" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.0128803, 0, 0.999963, -0.108469, 1.49607, 0.000620964, -1.49601, -0.108473, 0.00856438, 0.748858, 0, 6.23311 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Netherreich_Footstep_Walking_Concrete.wav-177d6bb1389817d432c36ae797d46dea.sample"
+
+[deps]
+
+source_file="res://enemies/PosessedSwordsman/assets/Netherreich_Footstep_Walking_Concrete.wav"
+dest_files=[ "res://.import/Netherreich_Footstep_Walking_Concrete.wav-177d6bb1389817d432c36ae797d46dea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

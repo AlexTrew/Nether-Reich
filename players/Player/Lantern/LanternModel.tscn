@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://players/Player/Lantern/lantern.png" type="Texture" id=1]
+[ext_resource path="res://players/Player/Lantern/lanternflame.png" type="Texture" id=2]
+[ext_resource path="res://players/Player/Lantern/lanternflame2.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 18
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 300, 300 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 23
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 300, 300 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 23
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 300, 300 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[node name="LanternModel" type="Spatial"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0.0615666, 0 )
+frames = SubResource( 1 )
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, -0.0759535, 0 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, -0.213483, 0 )
+frames = SubResource( 1 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+light_color = Color( 1, 0.858824, 0.223529, 1 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/flute_1.ogg-81fc78c027e1407f30f9df05a6cef5a0.oggstr"
+
+[deps]
+
+source_file="res://logic/Game/audio/flute_1.ogg"
+dest_files=[ "res://.import/flute_1.ogg-81fc78c027e1407f30f9df05a6cef5a0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

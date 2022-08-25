@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/540074__magnuswaker__potion-bubbles.wav-ca1a9e460133c46055702ba3ea8facfc.sample"
+
+[deps]
+
+source_file="res://common/assets/540074__magnuswaker__potion-bubbles.wav"
+dest_files=[ "res://.import/540074__magnuswaker__potion-bubbles.wav-ca1a9e460133c46055702ba3ea8facfc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

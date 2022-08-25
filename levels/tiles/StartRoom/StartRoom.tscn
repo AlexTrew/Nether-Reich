@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://levels/tiles/StartRoom/StartRoom.gd" type="Script" id=1]
+[ext_resource path="res://logic/CameraLockTrigger/CameraTarget.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/tiles/Textures/trail.png" type="Texture" id=3]
+[ext_resource path="res://players/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://statics/HighHouse/HouseRowGeneric.tscn" type="PackedScene" id=5]
+[ext_resource path="res://statics/House/Hoose.tscn" type="PackedScene" id=6]
+[ext_resource path="res://logic/CameraLockTrigger/CameraLockTrigger.tscn" type="PackedScene" id=7]
+[ext_resource path="res://logic/Trigger/Trigger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/tiles/Textures/horse3.png" type="Texture" id=10]
+[ext_resource path="res://logic/RoomDoor/RoomDoor.tscn" type="PackedScene" id=12]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 3 )
+uv2_scale = Vector3( 2, 0, 1 )
+
+[node name="StartRoom" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Statics" type="Spatial" parent="."]
+
+[node name="CSGMesh" type="CSGMesh" parent="Statics"]
+transform = Transform( 8.36561, 0, 0, 0, 1, 0, 0, 0, 34.0081, 0, -0.2, 0 )
+mesh = SubResource( 1 )
+material = SubResource( 2 )
+
+[node name="CameraLockTrigger" parent="Statics" instance=ExtResource( 7 )]
+transform = Transform( 2.00689, 0, 0, 0, 1, 0, 0, 0, 3.37938, 0, 0, 0 )
+
+[node name="EastRoomDoor" parent="Statics" instance=ExtResource( 12 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.03226, 0, 0 )
+
+[node name="hoose5" parent="Statics/EastRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.0801815, 0, -0.99678, 0, 1, 0, 0.99678, 0, -0.0801815, -4.98361, 0, -3.3613 )
+
+[node name="hoose6" parent="Statics/EastRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 0.225597, 0, -0.974221, 0, 1, 0, 0.974221, 0, 0.225597, 4.01289, 0, -3.782 )
+
+[node name="hoose9" parent="Statics/EastRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.0801815, 0, -0.99678, 0, 1, 0, 0.99678, 0, -0.0801815, -4.98361, 0, -3.3613 )
+
+[node name="hoose10" parent="Statics/EastRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 0.225597, 0, -0.974221, 0, 1, 0, 0.974221, 0, 0.225597, 4.01289, 0, -3.782 )
+
+[node name="NorthRoomDoor" parent="Statics" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.194669, 0, 8.54612 )
+
+[node name="hoose7" parent="Statics/NorthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.00565483, 0, -0.999984, 0, 1, 0, 0.999984, 0, -0.00565483, 5.24165, 0, -2.82868 )
+
+[node name="hoose8" parent="Statics/NorthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.00565483, 0, -0.999984, 0, 1, 0, 0.999984, 0, -0.00565483, -5.0489, 0, -2.88688 )
+
+[node name="hoose9" parent="Statics/NorthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 0.99678, 0, -0.0801815, 0, 1, 0, 0.0801815, 0, 0.99678, -11.556, 0, 13.5297 )
+visible = false
+
+[node name="hoose10" parent="Statics/NorthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 0.974221, 0, 0.225597, 0, 1, 0, -0.225597, 0, 0.974221, -11.9767, 0, 4.53323 )
+visible = false
+script = null
+
+[node name="hoose2" parent="Statics/NorthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.82792, 0, 13.409 )
+visible = false
+
+[node name="hoose4" parent="Statics/NorthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 8.84051, 0, 3.11831 )
+visible = false
+
+[node name="SouthRoomDoor" parent="Statics" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591257, 0, -8.48586 )
+
+[node name="Spatial" parent="Statics/SouthRoomDoor" instance=ExtResource( 5 )]
+transform = Transform( 0.0771192, 0, -0.997022, 0, 1, 0, 0.997022, 0, 0.0771192, 3.90406, 0, -3.43294 )
+
+[node name="hoose11" parent="Statics/SouthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.99678, 0, 0.0801814, 0, 1, 0, -0.0801814, 0, -0.99678, 7.5559, 0, 3.50225 )
+visible = false
+
+[node name="hoose12" parent="Statics/SouthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.974221, 0, -0.225597, 0, 1, 0, 0.225597, 0, -0.974221, 7.76664, 0, 12.4987 )
+visible = false
+
+[node name="hoose3" parent="Statics/SouthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6008, 0, 3.62296 )
+visible = false
+
+[node name="hoose5" parent="Statics/SouthRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6008, 0, 13.9137 )
+visible = false
+
+[node name="WestRoomDoor" parent="Statics" instance=ExtResource( 12 )]
+transform = Transform( -2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, -7.15016, 0, 0 )
+
+[node name="hoose" parent="Statics/WestRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 4.8629, 0, -2.94328 )
+
+[node name="hoose3" parent="Statics/WestRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -5.42781, 0, -2.94328 )
+
+[node name="hoose7" parent="Statics/WestRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( 0.0801814, 0, 0.99678, 0, 1, 0, -0.99678, 0, 0.0801814, 4.98361, 9.53674e-07, 19.4117 )
+
+[node name="hoose8" parent="Statics/WestRoomDoor" instance=ExtResource( 6 )]
+transform = Transform( -0.225597, 0, 0.974221, 0, 1, 0, -0.974221, 0, -0.225597, -4.01289, 0, 19.8324 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Statics"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.29506, 0 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="Statics"]
+transform = Transform( 0.431381, 1.22634, 5.3605e-08, 0, -5.68248e-08, 1.3, 1.22634, -0.431381, -1.88563e-08, 4.29221, 1.26585, 3.27784 )
+texture = ExtResource( 10 )
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="CameraTarget" parent="." instance=ExtResource( 2 )]
+
+[node name="PlayerPresentTrigger" parent="." instance=ExtResource( 8 )]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Underworld_transition.ogg-ef1c494a868e26c744550223c3d29cca.oggstr"
+
+[deps]
+
+source_file="res://common/assets/Underworld_transition.ogg"
+dest_files=[ "res://.import/Underworld_transition.ogg-ef1c494a868e26c744550223c3d29cca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://players/Player/LeftHandItemFSM/DrawPistolState.gd" type="Script" id=1]
+[ext_resource path="res://players/Player/LeftHandItemFSM/HolsterPistolState.gd" type="Script" id=2]
+[ext_resource path="res://players/Player/LeftHandItemFSM/AimPistolState.gd" type="Script" id=3]
+[ext_resource path="res://players/Player/LeftHandItemFSM/DoneState.gd" type="Script" id=4]
+[ext_resource path="res://players/Player/LeftHandItemFSM/LeftHandItemFSM.gd" type="Script" id=5]
+[ext_resource path="res://players/Player/LeftHandItemFSM/CannisterShotCannonDeployableState.gd" type="Script" id=6]
+
+[node name="LeftHandItemFSM" type="Node"]
+script = ExtResource( 5 )
+
+[node name="DrawPistolState" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="AimPistolState" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="HolsterPistolState" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="DoneState" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="GunDrawTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="CannisterShotCannonDeployableState" type="Node" parent="."]
+script = ExtResource( 6 )

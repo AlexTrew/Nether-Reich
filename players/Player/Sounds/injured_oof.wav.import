@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/injured_oof.wav-ff86dcf2ee3ec84069f5c6da770d5f5a.sample"
+
+[deps]
+
+source_file="res://players/Player/Sounds/injured_oof.wav"
+dest_files=[ "res://.import/injured_oof.wav-ff86dcf2ee3ec84069f5c6da770d5f5a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
