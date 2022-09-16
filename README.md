@@ -4,6 +4,5 @@
 
 * [Grid Viewer](docs/grid-viewer.md)
 
-##Built executable
-  Windows:
+Windows executable
 * [Get executable here](NetherReich.exe)
